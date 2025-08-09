@@ -1,0 +1,20 @@
+[
+  { "domain": "customers", "table": "customer" },
+  { "domain": "customers", "table": "address" },
+  { "domain": "customers", "table": "city" },
+  { "domain": "customers", "table": "country" },
+
+  { "domain": "films", "table": "film" },
+  { "domain": "films", "table": "film_actor" },
+  { "domain": "films", "table": "film_category" },
+  { "domain": "films", "table": "category" },
+  { "domain": "films", "table": "language" },
+  { "domain": "films", "table": "actor" },
+
+  { "domain": "inventory", "table": "inventory" },
+  { "domain": "inventory", "table": "store" },
+  { "domain": "inventory", "table": "staff" },
+
+  { "domain": "sales", "table": "rental" },
+  { "domain": "sales", "table": "payment" }
+]
