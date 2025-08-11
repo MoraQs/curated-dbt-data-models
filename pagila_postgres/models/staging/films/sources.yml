@@ -3,8 +3,148 @@ sources:
   - name: public
     tables:
       - name: actor
+        description: "Stores actor information."
+        columns:
+          - name: actor_id
+            description: "Primary key for actor."
+            tests:
+              - unique
+              - not_null
+          - name: first_name
+            description: "Actor's first name."
+            tests:
+              - not_null
+          - name: last_name
+            description: "Actor's last name."
+            tests:
+              - not_null
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null
+
       - name: category
+        description: "Stores film category information."
+        columns:
+          - name: category_id
+            description: "Primary key for category."
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: "Category name."
+            tests:
+              - not_null
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null
+
       - name: film
+        description: "Stores film information."
+        columns:
+          - name: film_id
+            description: "Primary key for film."
+            tests:
+              - unique
+              - not_null
+          - name: title
+            description: "Film title."
+            tests:
+              - not_null
+          - name: description
+            description: "Film description."
+          - name: release_year
+            description: "Year the film was released."
+          - name: language_id
+            description: "Foreign key to language."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'language')
+                  field: language_id
+          - name: rental_duration
+            description: "Rental duration in days."
+            tests:
+              - not_null
+          - name: rental_rate
+            description: "Rental rate."
+            tests:
+              - not_null
+          - name: length
+            description: "Film length in minutes."
+          - name: replacement_cost
+            description: "Replacement cost."
+            tests:
+              - not_null
+          - name: rating
+            description: "Film rating."
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null
+          - name: special_features
+            description: "Special features included."
+          - name: fulltext
+            description: "Full text search vector."
+
       - name: film_actor
+        description: "Associates films with actors."
+        columns:
+          - name: actor_id
+            description: "Foreign key to actor."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'actor')
+                  field: actor_id
+          - name: film_id
+            description: "Foreign key to film."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'film')
+                  field: film_id
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null
+
       - name: film_category
+        description: "Associates films with categories."
+        columns:
+          - name: film_id
+            description: "Foreign key to film."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'film')
+                  field: film_id
+          - name: category_id
+            description: "Foreign key to category."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'category')
+                  field: category_id
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null
+
       - name: language
+        description: "Stores language information."
+        columns:
+          - name: language_id
+            description: "Primary key for language."
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: "Language name."
+            tests:
+              - not_null
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null

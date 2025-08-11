@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: fFilmactors
+    description: "Fact table associating films with their actors."
+    columns:
+      - name: film_id
+        description: "Unique identifier for the film."
+        tests:
+          - not_null
+      - name: actors_name
+        description: "Full name of the actor associated with the film."
+
+  - name: fRentals
+    description: "Fact table containing rental transactions, including payment and activity details."
+    columns:
+      - name: rental_id
+        description: "Unique identifier for the rental event."
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Identifier for the customer who rented the film."
+        tests:
+          - not_null
+      - name: payment_id
+        description: "Identifier for the payment transaction associated with the rental."
+      - name: staff_id
+        description: "Identifier for the staff member who processed the rental."
+        tests:
+          - not_null
+      - name: film_id
+        description: "Identifier for the film being rented."
+        tests:
+          - not_null
+      - name: rental_date
+        description: "Date when the rental started."
+        tests:
+          - not_null
+      - name: return_date
+        description: "Date when the rental was returned."
+      - name: payment_date
+        description: "Date when the payment was made."
+      - name: amount_paid
+        description: "Amount paid for the rental."
+      - name: last_activity_date
+        description: "The latest date among rental, payment, and return activities for the rental."

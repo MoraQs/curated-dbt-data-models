@@ -1,0 +1,81 @@
+version: 2
+
+models:
+  - name: dCustomer
+    description: "Curated dimension table for customers, including address, city, country, and store manager details."
+    columns:
+      - name: customer_id
+        description: "Unique identifier for the customer."
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: "Full name of the customer (first and last name concatenated)."
+      - name: email_address
+        description: "Customer's email address."
+      - name: created_date
+        description: "Date the customer was created."
+      - name: address
+        description: "Street address of the customer."
+      - name: district
+        description: "District or region of the customer's address."
+      - name: phone_number
+        description: "Customer's phone number."
+      - name: city
+        description: "City where the customer resides."
+      - name: country
+        description: "Country where the customer resides."
+      - name: store_manager_name
+        description: "Full name of the manager of the store where the customer is registered."
+
+  - name: dFilms
+    description: "Curated dimension table for films, including language and category details."
+    columns:
+      - name: film_id
+        description: "Unique identifier for the film."
+        tests:
+          - unique
+          - not_null
+      - name: title
+        description: "Title of the film."
+      - name: description
+        description: "Description of the film."
+      - name: release_year
+        description: "Year the film was released."
+      - name: rental_rate
+        description: "Rental rate for the film."
+      - name: film_length
+        description: "Length of the film in minutes."
+      - name: replacement_cost
+        description: "Replacement cost for the film."
+      - name: rating
+        description: "Film rating (e.g., PG, R)."
+      - name: special_features
+        description: "Comma-separated list of special features included with the film."
+      - name: language
+        description: "Language of the film."
+      - name: film_category
+        description: "Category or genre of the film."
+
+  - name: dStaff
+    description: "Curated dimension table for staff members, including address, city, district, and country details."
+    columns:
+      - name: staff_id
+        description: "Unique identifier for the staff member."
+        tests:
+          - unique
+          - not_null
+      - name: staff_name
+        description: "Full name of the staff member (first and last name concatenated)."
+      - name: email
+        description: "Staff member's email address."
+      - name: staff_address
+        description: "Street address of the staff member."
+      - name: phone
+        description: "Staff member's phone number."
+      - name: city
+        description: "City where the staff member resides."
+      - name: district
+        description: "District or region of the staff member's address."
+      - name: country
+        description: "Country where the staff member resides."

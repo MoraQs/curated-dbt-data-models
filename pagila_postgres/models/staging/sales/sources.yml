@@ -3,4 +3,78 @@ sources:
   - name: public
     tables:
       - name: payment
+        description: "Stores payment transactions made by customers."
+        columns:
+          - name: payment_id
+            description: "Primary key for payment."
+            tests:
+              - unique
+              - not_null
+          - name: customer_id
+            description: "Foreign key to customer."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'customer')
+                  field: customer_id
+          - name: staff_id
+            description: "Foreign key to staff."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'staff')
+                  field: staff_id
+          - name: rental_id
+            description: "Foreign key to rental."
+            tests:
+              - relationships:
+                  to: source('public', 'rental')
+                  field: rental_id
+          - name: amount
+            description: "Amount paid."
+            tests:
+              - not_null
+          - name: payment_date
+            description: "Date and time of payment."
+            tests:
+              - not_null
+
       - name: rental
+        description: "Stores rental transactions for inventory items."
+        columns:
+          - name: rental_id
+            description: "Primary key for rental."
+            tests:
+              - unique
+              - not_null
+          - name: rental_date
+            description: "Date and time the rental started."
+            tests:
+              - not_null
+          - name: inventory_id
+            description: "Foreign key to inventory."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'inventory')
+                  field: inventory_id
+          - name: customer_id
+            description: "Foreign key to customer."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'customer')
+                  field: customer_id
+          - name: return_date
+            description: "Date and time the rental was returned."
+          - name: staff_id
+            description: "Foreign key to staff."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'staff')
+                  field: staff_id
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null

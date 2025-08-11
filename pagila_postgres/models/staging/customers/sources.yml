@@ -3,6 +3,122 @@ sources:
   - name: public
     tables:
       - name: address
+        description: "Stores address information for customers and staff."
+        columns:
+          - name: address_id
+            description: "Primary key for address."
+            tests:
+              - unique
+              - not_null
+          - name: address
+            description: "Street address."
+            tests:
+              - not_null
+          - name: address2
+            description: "Optional second address line."
+          - name: district
+            description: "District or region."
+            tests:
+              - not_null
+          - name: city_id
+            description: "Foreign key to city."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'city')
+                  field: city_id
+          - name: postal_code
+            description: "Postal code."
+          - name: phone
+            description: "Phone number."
+            tests:
+              - not_null
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null
+
       - name: city
+        description: "Stores city information."
+        columns:
+          - name: city_id
+            description: "Primary key for city."
+            tests:
+              - unique
+              - not_null
+          - name: city
+            description: "City name."
+            tests:
+              - not_null
+          - name: country_id
+            description: "Foreign key to country."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'country')
+                  field: country_id
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null
+
       - name: country
+        description: "Stores country information."
+        columns:
+          - name: country_id
+            description: "Primary key for country."
+            tests:
+              - unique
+              - not_null
+          - name: country
+            description: "Country name."
+            tests:
+              - not_null
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null
+
       - name: customer
+        description: "Stores customer information."
+        columns:
+          - name: customer_id
+            description: "Primary key for customer."
+            tests:
+              - unique
+              - not_null
+          - name: store_id
+            description: "Store where the customer is registered."
+            tests:
+              - not_null
+          - name: first_name
+            description: "Customer's first name."
+            tests:
+              - not_null
+          - name: last_name
+            description: "Customer's last name."
+            tests:
+              - not_null
+          - name: email
+            description: "Customer's email address."
+          - name: address_id
+            description: "Foreign key to address."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('public', 'address')
+                  field: address_id
+          - name: activebool
+            description: "Indicates if the customer is active."
+            tests:
+              - not_null
+          - name: create_date
+            description: "Date the customer was created."
+            tests:
+              - not_null
+          - name: last_update
+            description: "Timestamp of last update."
+            tests:
+              - not_null
+          - name: active
+            description: "Active status (deprecated, use activebool)."
