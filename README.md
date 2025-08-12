@@ -22,12 +22,8 @@ The documentation ensures that both technical and business users:
 
 ## 📖 How to View
 
-The documentation is available online here:  
+Browse the documentation here:  
 [**View dbt Docs**](https://moraqs.github.io/curated-dbt-data-models/)
 
-Generated with:
-
-```bash
-dbt docs generate
-dbt docs serve
-```
+Or jump directly to the **Lineage Graph**:
+[**Lineage View**](https://moraqs.github.io/curated-dbt-data-models/#!/overview/pagila_postgres?g_v=1)
