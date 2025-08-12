@@ -22,6 +22,9 @@ The documentation ensures that both technical and business users:
 
 ## 📖 How to View
 
+The documentation is available online here:  
+[**View dbt Docs**](https://moraqs.github.io/curated-dbt-data-models/)
+
 Generated with:
 
 ```bash
